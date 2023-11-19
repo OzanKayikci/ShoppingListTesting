@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -8,15 +10,18 @@ plugins {
 android {
     namespace = "com.laivinieks.shoppinglisttesting"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.laivinieks.shoppinglisttesting"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        buildConfigField("String","API_KEY", " ${properties.getProperty("API_KEY")}")
     }
 
     buildTypes {
@@ -38,6 +43,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 

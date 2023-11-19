@@ -12,4 +12,7 @@ abstract class ShoppingItemDb : RoomDatabase() {
 
     abstract fun shoppingDao(): ShoppingDao
 
+    companion object{
+        const val DATABASE_NAME = "shopping_db"
+    }
 }
