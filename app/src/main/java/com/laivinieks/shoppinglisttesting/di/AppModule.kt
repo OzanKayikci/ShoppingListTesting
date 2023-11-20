@@ -9,6 +9,8 @@ import com.laivinieks.shoppinglisttesting.data.local.ShoppingItemDb
 import com.laivinieks.shoppinglisttesting.data.remote.PixabayAPI
 import com.laivinieks.shoppinglisttesting.other.Constants.BASE_URL
 import com.laivinieks.shoppinglisttesting.other.Resource
+import com.laivinieks.shoppinglisttesting.repositories.DefaultShoppingRepository
+import com.laivinieks.shoppinglisttesting.repositories.ShoppingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +36,14 @@ class AppModule {
             ShoppingItemDb::class.java,
             ShoppingItemDb.DATABASE_NAME
         ).build()
+    }
+
+    //we did it because of we ask an interface as parameter for viewModal
+    // and dagger-hilt doesn't provide it. so we create and cast it in here
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(dao: ShoppingDao, api: PixabayAPI): ShoppingRepository {
+        return DefaultShoppingRepository(dao, api)
     }
 
     @Singleton

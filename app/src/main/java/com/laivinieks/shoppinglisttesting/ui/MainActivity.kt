@@ -1,4 +1,4 @@
-package com.laivinieks.shoppinglisttesting
+package com.laivinieks.shoppinglisttesting.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

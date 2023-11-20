@@ -8,6 +8,7 @@ import com.laivinieks.shoppinglisttesting.other.Resource
 
 class FakeShoppingRepository : ShoppingRepository {
 
+    // for don't using dao we crated fake objects
     private val shoppingItems = mutableListOf<ShoppingItem>()
     private val observableShoppingItems = MutableLiveData<List<ShoppingItem>>(shoppingItems)
     private val observableTotalPrice = MutableLiveData<Float>()
